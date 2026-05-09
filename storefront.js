@@ -55,13 +55,13 @@ const homeData = {
         image: "image/big banner/Tpipay Card.png",
         href: "prepaid-card-api.html"
       },
-      {
-        title: "Prepaid Services",
-        description: "Wallet load, card load, card-to-bank transfer, real-time balance check, transaction history, and KYC integration.",
-        icon: "image/serviceimage/credit-card-2--deposit-payment-finance-atm-withdraw-atm.svg",
-        image: "image/serviceimage/prepaid service-optimized.png",
-        href: "prepaid-services.html"
-      },
+      // {
+      //   title: "Prepaid Services",
+      //   description: "Wallet load, card load, card-to-bank transfer, real-time balance check, transaction history, and KYC integration.",
+      //   icon: "image/serviceimage/credit-card-2--deposit-payment-finance-atm-withdraw-atm.svg",
+      //   image: "image/serviceimage/prepaid service-optimized.png",
+      //   href: "prepaid-services.html"
+      // },
       {
         title: "Connected Banking Payout API",
         description: "Instant bank transfer (IMPS/NEFT/RTGS) to any beneficiary account with real-time status and auto reconciliation.",
