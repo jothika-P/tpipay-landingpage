@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TPIPAY Cart</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TPIPAY Cart</title>
+<link rel="icon" href="image/icon and logo/favicon.png?v=1">
+  <link rel="stylesheet" href="frontcss/front.css">
+  <link rel="stylesheet" href="frontcss/navbar.css">
+  <link rel="stylesheet" href="frontcss/footer.css">
+  <link rel="stylesheet" href="frontcss/storefront.css">
+</head>
+<body>
+  <header class="header-section">
+    <div class="header-container">
+      <a href="index.html" class="logo"><img src="image/big banner/logotpi.png" alt="TPIPAY Logo"></a>
+      <button class="menu-toggle" aria-label="Toggle Navigation" type="button">
+        <span class="menu-icon">&#9776;</span>
+      </button>
+      <nav class="main-nav">
+  <div class="divide">
+    <ul>
+      <li><a href="index.html"><span>Home</span></a></li>
+      <li><a href="index.html#about"><span>About</span></a></li>
+      <li><a href="service.html"><span>Service</span></a></li>
+      <li><a href="products.html"><span>Product</span></a></li>
+      <li><a href="contact.html"><span>Contact</span></a></li>
+    </ul>
+  </div>
+  <a href="cart.html" class="cart-btn" aria-label="Cart">
+    <svg class="cart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H7"></path></svg>
+    <span class="cart-count" id="cartCount">0</span>
+  </a>
+</nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <p class="muted">Edit quantities and proceed to secure checkout.</p>
+
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="cartRows"></tbody>
+    </table>
+
+    <div class="cart-total-box">
+      <strong>Grand Total: <span id="cartGrandTotal">Rs 0</span></strong>
+      <a href="checkout.html" class="primary-btn">Proceed To Checkout</a>
+    </div>
+  </main>
+
+  <footer id="contact" class="footer-section">
+  <div class="footer-container footer-top">
+    <div class="footer-brand">
+      <img src="image/icon and logo/tpipay_logo_white.png" alt="TPIPAY Logo">
+      <p class="footer-brand-name">TPIPAY Financial Technology Private Limited</p>
+      <p class="footer-brand-address">Plot No-1367/3053,644/1188,<br>Laxmisagar (Khorla), Khurda,<br>Bhubaneswar, Orissa, India, 751006</p>
+      <div class="footer-meta">
+        <p><strong>Phone:</strong> +91 9040888400</p>
+        <p><strong>Email:</strong> <a href="mailto:support@tpipay.ai">support@tpipay.ai</a></p>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/tpipay_/?hl=en" target="_blank" rel="noopener noreferrer"><img src="image/icon and logo/Instagram--Streamline-Unicons.svg" alt="Instagram"></a>
+        <a href="https://www.facebook.com/people/TpiPay/61570881956219/#" target="_blank" rel="noopener noreferrer"><img src="image/icon and logo/Facebook-1--Streamline-Plump.svg" alt="Facebook"></a>
+        <a href="https://x.com/Tpi_Pay" target="_blank" rel="noopener noreferrer"><img src="image/icon and logo/Twitter--Streamline-Bootstrap.svg" alt="Twitter"></a>
+        <a href="https://in.linkedin.com/company/tpipay-fintech-private-limited" target="_blank" rel="noopener noreferrer"><img src="image/icon and logo/Linkedin--Streamline-Bootstrap.svg" alt="LinkedIn"></a>
+        <a href="https://www.youtube.com/@TPIPAYGROUPOFCOMPANY" target="_blank" rel="noopener noreferrer"><img src="image/icon and logo/Youtube--Streamline-Simple-Icons.svg" alt="YouTube"></a>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul>
+        <li>Prepaid Card API</li>
+        <li>Prepaid Services</li>
+        <li>Connected Banking Payout API</li>
+        <li>UPI Collection API</li>
+        <li>Static QR Collection</li>
+        <li>Static QR Standee</li>
+        <li>Sound Box</li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html#aboutPreview">About Us</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://banking.mytpipay.com/login" target="_blank" rel="noopener noreferrer">Partner Login</a></li>
+        <li><a href="https://banking.mytpipay.com/sign-up" target="_blank" rel="noopener noreferrer">Become Partner</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="Privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Services</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="cookie.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-explore">
+    <h4>Explore More With TPIPAY</h4>
+    <div class="footer-explore-grid">
+      <div class="footer-explore-col">
+        <h5>Collections</h5>
+        <ul>
+          <li>UPI Collection API</li>
+          <li>Static QR Collection</li>
+          <li>Static QR Standee</li>
+          <li>Sound Box</li>
+        </ul>
+      </div>
+      <div class="footer-explore-col">
+        <h5>Prepaid</h5>
+        <ul>
+          <li>Prepaid Card API</li>
+          <li>Prepaid Services</li>
+          <li>Wallet Load</li>
+          <li>Card Load</li>
+        </ul>
+      </div>
+      <div class="footer-explore-col">
+        <h5>Banking</h5>
+        <ul>
+          <li>Connected Banking Payout API</li>
+          <li>IMPS / NEFT / RTGS</li>
+          <li>Auto Reconciliation</li>
+        </ul>
+      </div>
+      <div class="footer-explore-col">
+        <h5>Support</h5>
+        <ul>
+          <li>Partner Support</li>
+          <li>Onboarding Help</li>
+          <li>API Documentation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="copyright">&copy; 2025 Tpipay Financial Technology Private Limited. All rights reserved.</p>
+</footer>
+
+  <script src="storefront.js"></script>
+</body>
+</html>
+
+
+
+
+  <link rel="stylesheet" href="frontcss/front.css">
+  <link rel="stylesheet" href="frontcss/navbar.css">
+  <link rel="stylesheet" href="frontcss/footer.css">
+  <link rel="stylesheet" href="frontcss/storefront.css">
+</head>
+<body>
+  <header class="header-section">
+    <div class="header-container">
+      <a href="index.html" class="logo"><img src="image/big banner/logotpi.png" alt="TPIPAY Logo"></a>
+      <button class="menu-toggle" aria-label="Toggle Navigation" type="button">
+        <span class="menu-icon">&#9776;</span>
+      </button>
+      <nav class="main-nav">
+  <div class="divide">
+    <ul>
+      <li><a href="index.html"><span>Home</span></a></li>
+      <li><a href="index.html#about"><span>About</span></a></li>
+      <li><a href="service.html"><span>Service</span></a></li>
+      <li><a href="products.html"><span>Product</span></a></li>
+      <li><a href="contact.html"><span>Contact</span></a></li>
+    </ul>
+  </div>
+  <a href="cart.html" class="cart-btn" aria-label="Cart">
+    <svg class="cart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H7"></path></svg>
+    <span class="cart-count" id="cartCount">0</span>
+  </a>
+</nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <p class="muted">Edit quantities and proceed to secure checkout.</p>
+
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="cartRows"></tbody>
+    </table>
+
+    <div class="cart-total-box">
+      <strong>Grand Total: <span id="cartGrandTotal">Rs 0</span></strong>
+      <a href="checkout.html" class="primary-btn">Proceed To Checkout</a>
+    </div>
+  </main>
+
+  <footer id="contact" class="footer-section">
+  <div class="footer-container footer-top">
+    <div class="footer-brand">
+      <img src="image/icon and logo/tpipay_logo_white.png" alt="TPIPAY Logo">
+      <p class="footer-brand-name">TPIPAY Financial Technology Private Limited</p>
+      <p class="footer-brand-address">Plot No-1367/3053,644/1188,<br>Laxmisagar (Khorla), Khurda,<br>Bhubaneswar, Orissa, India, 751006</p>
+      <div class="footer-meta">
+        <p><strong>Phone:</strong> +91 9040888400</p>
+        <p><strong>Email:</strong> <a href="mailto:support@tpipay.ai">support@tpipay.ai</a></p>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/tpipay_/?hl=en" target="_blank" rel="noopener noreferrer"><img src="image/icon and logo/Instagram--Streamline-Unicons.svg" alt="Instagram"></a>
+        <a href="https://www.facebook.com/people/TpiPay/61570881956219/#" target="_blank" rel="noopener noreferrer"><img src="image/icon and logo/Facebook-1--Streamline-Plump.svg" alt="Facebook"></a>
+        <a href="https://x.com/Tpi_Pay" target="_blank" rel="noopener noreferrer"><img src="image/icon and logo/Twitter--Streamline-Bootstrap.svg" alt="Twitter"></a>
+        <a href="https://in.linkedin.com/company/tpipay-fintech-private-limited" target="_blank" rel="noopener noreferrer"><img src="image/icon and logo/Linkedin--Streamline-Bootstrap.svg" alt="LinkedIn"></a>
+        <a href="https://www.youtube.com/@TPIPAYGROUPOFCOMPANY" target="_blank" rel="noopener noreferrer"><img src="image/icon and logo/Youtube--Streamline-Simple-Icons.svg" alt="YouTube"></a>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h4>Services</h4>
+      <ul>
+        <li>Prepaid Card API</li>
+        <li>Prepaid Services</li>
+        <li>Connected Banking Payout API</li>
+        <li>UPI Collection API</li>
+        <li>Static QR Collection</li>
+        <li>Static QR Standee</li>
+        <li>Sound Box</li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html#aboutPreview">About Us</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://banking.mytpipay.com/login" target="_blank" rel="noopener noreferrer">Partner Login</a></li>
+        <li><a href="https://banking.mytpipay.com/sign-up" target="_blank" rel="noopener noreferrer">Become Partner</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="Privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Services</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="cookie.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-explore">
+    <h4>Explore More With TPIPAY</h4>
+    <div class="footer-explore-grid">
+      <div class="footer-explore-col">
+        <h5>Collections</h5>
+        <ul>
+          <li>UPI Collection API</li>
+          <li>Static QR Collection</li>
+          <li>Static QR Standee</li>
+          <li>Sound Box</li>
+        </ul>
+      </div>
+      <div class="footer-explore-col">
+        <h5>Prepaid</h5>
+        <ul>
+          <li>Prepaid Card API</li>
+          <li>Prepaid Services</li>
+          <li>Wallet Load</li>
+          <li>Card Load</li>
+        </ul>
+      </div>
+      <div class="footer-explore-col">
+        <h5>Banking</h5>
+        <ul>
+          <li>Connected Banking Payout API</li>
+          <li>IMPS / NEFT / RTGS</li>
+          <li>Auto Reconciliation</li>
+        </ul>
+      </div>
+      <div class="footer-explore-col">
+        <h5>Support</h5>
+        <ul>
+          <li>Partner Support</li>
+          <li>Onboarding Help</li>
+          <li>API Documentation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="copyright">&copy; 2025 Tpipay Financial Technology Private Limited. All rights reserved.</p>
+</footer>
+
+  <script src="storefront.js"></script>
+</body>
+</html>
+
+
+

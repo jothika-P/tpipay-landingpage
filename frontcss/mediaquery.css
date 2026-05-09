@@ -1,0 +1,412 @@
+
+@media (max-width: 1025px) {
+  section { padding: 60px 15px; }
+  .main-container { padding: 0 10px; }
+  .banner-front-img { height: 600px; }
+  .card { width: 480px; top: 35%; }
+  .hero-content h1 { font-size: 48px; }
+  .hero-content p { font-size: 16px; }
+  .hero-actions { flex-direction: row; gap: 205px; }
+  .hero-btn { font-size: 17px; padding: 10px 14px; min-width: 180px; }
+  .hero-btn img { width: 36px; height: 36px; }
+  .services-header h2 { font-size: 42px; }
+  .service-card { max-width: 90%; }
+  .service-icon-wrapper { width: 150px; height: 150px; }
+  .service-icon-wrapper img { width: 75px; height: 75px; }
+  .value-visual, .features-visual { width: 100%; height: auto; }
+  .stat-number { font-size: 40px; }
+  .stat-label { font-size: 13px; }
+  .view-all-link{
+    margin-left: 830px;
+  }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    display: grid;
+}
+.software-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    display: grid;
+}
+.software-section{
+         margin: 20px 30px;
+        width: 973px;
+}
+}
+ @media screen and (max-width: 768px) {
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   flex-wrap: nowrap;
+    gap: 4px;
+}
+  .view-all-link{
+    margin-left: 565px;
+  }
+  
+.mission-container {
+    gap: 45px
+}
+.features-bg-img {
+        width: 388px;
+    }
+.software-section{
+              margin: 30px 36px;
+        width: 700px;
+
+}
+.mobile-app-section {
+    padding: 70px 50px;
+}
+.mobile-app-visual img {
+    width: 350px;
+}
+.revenue-chart-overlay {
+    right: 20px;  
+ height: 250px;
+ width: 300px;
+
+}
+.revenue-bars { height: 180px;  }
+ 
+ .certs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+ }
+ .registration-section {
+         padding-top: 236px;
+        width: 704px;
+        margin: 0px 30px;
+    }
+ }
+
+/* ðŸ“³ Small mobile (â‰¤480px) */
+@media (max-width: 480px) {
+  .banner-front-img { height: 450px; }
+  .hero-section{
+        padding: 30px 20px 0px 20px;
+  }
+  .card { width: 240px; top: 45%; }
+  .hero-content h1 { font-size: 28px; }
+  .hero-content p { font-size: 12px; }
+  .service-icon-wrapper { width: 100px; height: 100px; }
+  .service-icon-wrapper img { width: 50px; height: 50px; }
+  .stat-number { font-size: 26px; }
+  .mobile-app-text h2 { font-size: 22px; }
+  .revenue-chart-overlay {
+    left: 2px;
+  }
+  .revenue-bars { height: 189px; }
+  .rev-bar { width: 14px; border-radius: 14px; }
+  .mission-container {
+    gap: 25px;
+    display: flex;
+    flex-direction: column;
+}
+    .view-all-link {
+        margin-left: 233px;
+    }
+    .services-header p {
+    font-size: 12px;
+    }
+        .services-grid {
+     display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;}
+.features-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+       .chart-overlay {
+        bottom: -65px;
+        left: -2px;
+        height: 177px;
+        width: 211px;
+    }
+    .logo-row {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+   .mission-image img {
+    width: 360px;
+   }
+    .software-section{
+        margin: 20px 16px;
+        width: 400px;
+    }
+    .mobile-app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    }
+    .app-store-buttons {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    }
+        .mobile-app-section {
+        padding: 40px 30px;
+    }
+    .registration-section {
+        width: 400px;
+           margin: -143px 0PX 16px 16PX;
+    }
+  .value-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-direction: column;
+}
+.stats-container {
+    display: grid;
+
+    justify-content: space-around;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+}
+}
+
+/* Small screen specific tweaks */
+@media (max-width: 480px) {
+  .hero-content h1 { font-size: clamp(20px, 8vw, 34px); line-height: 1.1; }
+  .hero-actions { gap: 12px; }
+  .hero-btn { font-size: 14px; padding: 8px 10px; border-radius: 9999px; }
+  .services-header h2 { font-size: clamp(20px, 6vw, 32px); }
+  .services-grid { gap: 14px; }
+  .service-icon-wrapper { width: 90px; height: 90px; }
+  .service-icon-wrapper img { width: 44px; height: 44px; }
+  .team-grid { gap: 10px; }
+  .team-member { width: 140px; }
+  .value-description { font-size: 18px; }
+}
+
+/* Accessibility: respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+@media (max-width: 380px) {
+    .view-all-link {
+        margin-left: 200px;
+        font-size: 20px;
+    }
+    .features-bg-img {
+        width: 330px;
+    }
+        .software-section {
+        margin: 20px 0px;
+        width: 350px;
+    }
+    .app-store-btn {
+    width: 145px;
+    }
+    .stat-item {
+    min-width: 156px;
+    }
+    .value-section {
+    padding: 72px 20px 70PX 20px;
+}
+    .registration-section {
+        width: 340px;
+    }
+        .mission-image img {
+        width: 338px;
+    }
+    .about-visual img {
+        max-width: 300px;
+        margin-left: -28px;
+    }
+    .value-bg-img {
+    MARGIN-TOP: 24PX;
+}
+}
+
+/* Global responsive fixes for shared sections */
+@media (max-width: 1200px) {
+  .viewall {
+    justify-content: flex-end;
+  }
+  .view-all-link {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .software-section,
+  .stats-section {
+    width: min(100%, 1200px);
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .mission-container,
+  .features-container,
+  .value-container,
+  .mobile-app-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .mission-text,
+  .features-text,
+  .value-text,
+  .mobile-app-text {
+    max-width: 680px;
+  }
+  .mission-image img,
+  .features-visual,
+  .value-visual,
+  .mobile-app-visual img {
+    width: min(100%, 520px);
+    height: auto;
+  }
+  .features-visual,
+  .value-visual {
+    height: auto;
+  }
+  .value-bg-img {
+    height: auto;
+    margin-top: 0;
+  }
+  .features-visual .chart-overlay {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-top: 16px;
+    left: auto;
+    bottom: auto;
+  }
+  .value-visual .revenue-chart-overlay {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-top: 16px;
+    left: auto;
+    bottom: auto;
+  }
+  .special-feature-panel .chart-overlay {
+    position: absolute;
+    left: 0;
+    right: auto;
+    bottom: 0;
+    width: min(92%, 260px);
+    margin: 0;
+  }
+  .mobile-app-section {
+    padding: 40px 20px;
+  }
+  .registration-section {
+    width: min(100%, 1200px);
+    margin: 20px auto;
+  }
+  .stats-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .software-section,
+  .stats-section {
+    margin: 16px auto;
+  }
+  .registration-section {
+    padding: 70px 16px 50px;
+    margin: 16px auto;
+    width: min(100%, 1200px);
+  }
+  .hero-actions {
+    gap: 20px;
+  }
+  .hero-btn {
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
+  }
+  .services-header h2 {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+  .view-all-link {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+  .features-visual,
+  .mission-image img,
+  .value-visual {
+    width: 100%;
+  }
+  .app-store-buttons {
+    gap: 12px;
+  }
+  .app-store-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .stats-container {
+    gap: 16px;
+  }
+  .stat-item {
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .software-grid {
+    grid-template-columns: 1fr;
+  }
+  .services-grid {
+    gap: 20px;
+  }
+  .service-card {
+    max-width: 100%;
+  }
+  .features-text h2 {
+    font-size: clamp(28px, 8vw, 38px);
+  }
+  .value-text h2 {
+    font-size: clamp(28px, 8vw, 38px);
+  }
+  .value-description {
+    font-size: 18px;
+  }
+  .registration-section {
+    padding: 60px 14px 46px;
+    margin: 16px auto;
+    width: min(100%, 1200px);
+  }
+  .cert-card {
+    min-width: 0;
+    width: 100%;
+  }
+  .certs-grid {
+    column-gap: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .services-header h2 {
+    font-size: clamp(26px, 8.5vw, 36px);
+  }
+  .view-all-link {
+    font-size: 20px;
+  }
+  .stat-item {
+    min-width: 120px;
+  }
+}
+
