@@ -24,7 +24,6 @@ const homeData = {
     title: "Our Banking & Payment Network",
     logos: [
       { image: "image/bank image/CASHFREE.png", alt: "Cashfree" },
-      { image: "image/bank image/Eko.png", alt: "Eko" },
       { image: "image/bank image/instantpay.png", alt: "InstantPay" },
       { image: "image/bank image/ISERVEU-MAIN-LOGO.png", alt: "IserveU" },
       { image: "image/bank image/Logo-nsdl.png", alt: "NSDL Payments Bank" },
