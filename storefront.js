@@ -20,19 +20,19 @@ const homeData = {
     ctaPrimary: { label: "Partner Login", href: "https://banking.mytpipay.com/login" },
     ctaSecondary: { label: "Become Partner", href: "https://banking.mytpipay.com/sign-up" }
   },
-  partners: {
-    title: "Our Banking & Payment Network",
-    logos: [
-      { image: "image/bank image/CASHFREE.png", alt: "Cashfree" },
-      { image: "image/bank image/instantpay.png", alt: "InstantPay" },
-      { image: "image/bank image/ISERVEU-MAIN-LOGO.png", alt: "IserveU" },
-      { image: "image/bank image/Logo-nsdl.png", alt: "NSDL Payments Bank" },
-      { image: "image/bank image/paysprint.png", alt: "Paysprint" },
-      { image: "image/bank image/PAYU.png", alt: "PayU" },
-      { image: "image/bank image/SabPaisa-logo.png", alt: "SabPaisa" },
-      { image: "image/bank image/razor.png", alt: "Razorpay" }
-    ]
-  },
+  // partners: {
+  //   title: "Our Banking & Payment Network",
+  //   logos: [
+  //     { image: "image/bank image/CASHFREE.png", alt: "Cashfree" },
+  //     { image: "image/bank image/instantpay.png", alt: "InstantPay" },
+  //     { image: "image/bank image/ISERVEU-MAIN-LOGO.png", alt: "IserveU" },
+  //     { image: "image/bank image/Logo-nsdl.png", alt: "NSDL Payments Bank" },
+  //     { image: "image/bank image/paysprint.png", alt: "Paysprint" },
+  //     { image: "image/bank image/PAYU.png", alt: "PayU" },
+  //     { image: "image/bank image/SabPaisa-logo.png", alt: "SabPaisa" },
+  //     { image: "image/bank image/razor.png", alt: "Razorpay" }
+  //   ]
+  // },
   mission: {
     subtitle: "OUR MISSION",
     title: "Empowering Your Financial Freedom",
