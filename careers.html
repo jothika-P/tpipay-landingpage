@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Careers | TPI Pay</title>
+  <meta name="description" content="Join TPI Pay and help build the best Payment Gateway and Financial Technology Services">
+  <link rel="icon" href="image/icon and logo/favicon.png?v=1">
+  <link rel="stylesheet" href="frontcss/front.css">
+  <link rel="stylesheet" href="frontcss/navbar.css">
+  <link rel="stylesheet" href="frontcss/footer.css">
+  <link rel="stylesheet" href="frontcss/careers.css">
+</head>
+<body class="careers-page">
+  <header id="header" class="header-section">
+    <div class="header-container">
+      <a href="/" class="logo">
+        <img src="image/big banner/logotpi.png" alt="TPIPAY Logo">
+      </a>
+      <button class="menu-toggle" aria-label="Toggle Navigation" type="button">
+        <span class="menu-icon">&#9776;</span>
+      </button>
+      <nav class="main-nav">
+        <div class="divide">
+          <ul>
+            <li><a href="/"><span>Home</span></a></li>
+            <li><a href="/#aboutPreview"><span>About</span></a></li>
+            <li><a href="service"><span>Service</span></a></li>
+            <li><a href="products"><span>Product</span></a></li>
+            <li><a href="careers.html"><span>Careers</span></a></li>
+            <li><a href="contact"><span>Contact</span></a></li>
+          </ul>
+        </div>
+        <a href="cart" class="cart-btn" aria-label="Cart">
+          <svg class="cart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H7"></path></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="careers-hero">
+      <h1>Join Our Team</h1>
+      <p>Help us build the future of digital payments and financial technology in India. Discover your next career opportunity at TPI Pay.</p>
+    </section>
+
+    <section class="careers-section">
+      <h2 class="section-title">Why Join Us?</h2>
+      <div class="perks-grid">
+        <div class="perk-card">
+          <h3>Innovation First</h3>
+          <p>Work on cutting-edge payment solutions and push the boundaries of financial technology.</p>
+        </div>
+        <div class="perk-card">
+          <h3>Growth Opportunities</h3>
+          <p>We invest in our team. Enjoy continuous learning and clear paths for career advancement.</p>
+        </div>
+        <div class="perk-card">
+          <h3>Great Culture</h3>
+          <p>Join a collaborative, inclusive, and dynamic team that values every individual's contribution.</p>
+        </div>
+        <div class="perk-card">
+          <h3>Impact</h3>
+          <p>Build products that empower businesses and individuals across the country.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="careers-section">
+      <h2 class="section-title">Open Positions</h2>
+      <div class="jobs-grid">
+        <div class="job-card">
+          <h3 class="job-title">Senior Software Engineer</h3>
+          <div class="job-details">
+            <span>Engineering</span>
+            <span>•</span>
+            <span>Bhubaneswar</span>
+            <span>•</span>
+            <span>Full-time</span>
+          </div>
+          <a href="#apply" class="job-btn" onclick="selectPosition('Senior Software Engineer')">Apply Now</a>
+        </div>
+        <div class="job-card">
+          <h3 class="job-title">Product Manager</h3>
+          <div class="job-details">
+            <span>Product</span>
+            <span>•</span>
+            <span>Remote</span>
+            <span>•</span>
+            <span>Full-time</span>
+          </div>
+          <a href="#apply" class="job-btn" onclick="selectPosition('Product Manager')">Apply Now</a>
+        </div>
+        <div class="job-card">
+          <h3 class="job-title">Customer Success Specialist</h3>
+          <div class="job-details">
+            <span>Support</span>
+            <span>•</span>
+            <span>Bhubaneswar</span>
+            <span>•</span>
+            <span>Full-time</span>
+          </div>
+          <a href="#apply" class="job-btn" onclick="selectPosition('Customer Success Specialist')">Apply Now</a>
+        </div>
+      </div>
+
+      <div class="application-section" id="apply">
+        <h2 class="section-title">Submit Your Application</h2>
+        <form class="application-form" id="careerForm">
+          <div class="form-message" id="formMessage"></div>
+          
+          <div class="form-group">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" required>
+            <span class="error-message">Please enter your full name.</span>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error-message">Please enter a valid email address.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="mobile">Mobile Number *</label>
+            <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+            <span class="error-message">Please enter a valid 10-digit mobile number.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="position">Position Applying For *</label>
+            <select id="position" name="position" required>
+              <option value="">Select a position</option>
+              <option value="Senior Software Engineer">Senior Software Engineer</option>
+              <option value="Product Manager">Product Manager</option>
+              <option value="Customer Success Specialist">Customer Success Specialist</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="error-message">Please select a position.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="company">Current Company</label>
+            <input type="text" id="company" name="company">
+          </div>
+
+          <div class="form-group">
+            <label for="experience">Years of Experience</label>
+            <input type="number" id="experience" name="experience" min="0" step="0.5">
+          </div>
+
+          <div class="form-group full-width">
+            <label for="linkedin">LinkedIn Profile (Optional)</label>
+            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+            <span class="error-message">Please enter a valid URL.</span>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="coverLetter">Cover Letter / Message</label>
+            <textarea id="coverLetter" name="coverLetter" rows="4"></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="resume">Resume Upload * (PDF, DOC, DOCX only, max 10 MB)</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+            <span class="error-message" id="fileError">Please upload a valid resume file (max 10MB).</span>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span>Submit Application</span>
+            <div class="spinner" id="submitSpinner"></div>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-wrap">
+    <!-- Keep standard footer structure to match the site, simple version for brevity -->
+    <div class="footer-copy">
+      <p>&copy; 2024 TPI Pay Pvt Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.main-nav').classList.toggle('active');
+    });
+
+    // Helper to pre-select position from job cards
+    function selectPosition(pos) {
+      const select = document.getElementById('position');
+      select.value = pos;
+    }
+
+    // Replace with your Google Apps Script Web App URL after deployment
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxpAPqGfE6P-MY1YTFIYqqlPBit4oVIDmO1ytAYtGcvEPteZX7Mg0Oj8OPv_Gohj-zF/exec';
+
+    const form = document.getElementById('careerForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const spinner = document.getElementById('submitSpinner');
+    const formMessage = document.getElementById('formMessage');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Basic validation reset
+      document.querySelectorAll('.form-group').forEach(el => el.classList.remove('has-error'));
+      formMessage.style.display = 'none';
+      formMessage.className = 'form-message';
+
+      let isValid = true;
+      const fileInput = document.getElementById('resume');
+      const file = fileInput.files[0];
+
+      // File validation
+      if (!file) {
+        fileInput.parentElement.classList.add('has-error');
+        isValid = false;
+      } else {
+        const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+        if (!validTypes.includes(file.type)) {
+          document.getElementById('fileError').innerText = 'Invalid file type. Only PDF, DOC, and DOCX are allowed.';
+          fileInput.parentElement.classList.add('has-error');
+          isValid = false;
+        } else if (file.size > 10 * 1024 * 1024) { // 10MB
+          document.getElementById('fileError').innerText = 'File size exceeds 10 MB limit.';
+          fileInput.parentElement.classList.add('has-error');
+          isValid = false;
+        }
+      }
+
+      // Check native validation
+      if (!form.checkValidity() || !isValid) {
+        form.querySelectorAll(':invalid').forEach(input => {
+          input.parentElement.classList.add('has-error');
+        });
+        return;
+      }
+
+      // Set loading state
+      submitBtn.disabled = true;
+      spinner.style.display = 'block';
+      submitBtn.querySelector('span').innerText = 'Uploading...';
+
+      try {
+        // Read file as Base64
+        const base64Data = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result.split(',')[1]);
+          reader.onerror = error => reject(error);
+          reader.readAsDataURL(file);
+        });
+
+        // Prepare JSON payload
+        const payload = {
+          fullName: document.getElementById('fullName').value,
+          email: document.getElementById('email').value,
+          mobile: document.getElementById('mobile').value,
+          position: document.getElementById('position').value,
+          company: document.getElementById('company').value,
+          experience: document.getElementById('experience').value,
+          linkedin: document.getElementById('linkedin').value,
+          coverLetter: document.getElementById('coverLetter').value,
+          resume: {
+            fileName: file.name,
+            mimeType: file.type,
+            base64: base64Data
+          }
+        };
+
+        // Send request
+        const response = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          formMessage.innerText = result.message || 'Thank you! Your application has been submitted successfully.';
+          formMessage.classList.add('success');
+          form.reset();
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        formMessage.innerText = 'Sorry, an error occurred while submitting your application. Please try again.';
+        formMessage.classList.add('error');
+      } finally {
+        submitBtn.disabled = false;
+        spinner.style.display = 'none';
+        submitBtn.querySelector('span').innerText = 'Submit Application';
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
