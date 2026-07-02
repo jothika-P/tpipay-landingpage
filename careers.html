@@ -136,9 +136,20 @@
               <option value="Senior Software Engineer">Senior Software Engineer</option>
               <option value="Product Manager">Product Manager</option>
               <option value="Customer Success Specialist">Customer Success Specialist</option>
+              <option value="Telecalling">Telecalling</option>
+              <option value="KYC Processing">KYC Processing</option>
+              <option value="Operations">Operations</option>
+              <option value="Sales">Sales</option>
+              <option value="HR Executive">HR Executive</option>
               <option value="Other">Other</option>
             </select>
             <span class="error-message">Please select a position.</span>
+          </div>
+
+          <div class="form-group" id="otherPositionGroup" style="display: none;">
+            <label for="otherPosition">Specify Position *</label>
+            <input type="text" id="otherPosition" name="otherPosition">
+            <span class="error-message">Please specify the position you are applying for.</span>
           </div>
 
           <div class="form-group">
@@ -203,6 +214,22 @@
     const submitBtn = document.getElementById('submitBtn');
     const spinner = document.getElementById('submitSpinner');
     const formMessage = document.getElementById('formMessage');
+    
+    // Handle "Other" position input visibility
+    const positionSelect = document.getElementById('position');
+    const otherPositionGroup = document.getElementById('otherPositionGroup');
+    const otherPositionInput = document.getElementById('otherPosition');
+
+    positionSelect.addEventListener('change', function() {
+      if (this.value === 'Other') {
+        otherPositionGroup.style.display = 'flex';
+        otherPositionInput.required = true;
+      } else {
+        otherPositionGroup.style.display = 'none';
+        otherPositionInput.required = false;
+        otherPositionInput.value = '';
+      }
+    });
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -256,11 +283,14 @@
         });
 
         // Prepare JSON payload
+        const selectedPosition = document.getElementById('position').value;
+        const finalPosition = selectedPosition === 'Other' ? document.getElementById('otherPosition').value : selectedPosition;
+        
         const payload = {
           fullName: document.getElementById('fullName').value,
           email: document.getElementById('email').value,
           mobile: document.getElementById('mobile').value,
-          position: document.getElementById('position').value,
+          position: finalPosition,
           company: document.getElementById('company').value,
           experience: document.getElementById('experience').value,
           linkedin: document.getElementById('linkedin').value,
