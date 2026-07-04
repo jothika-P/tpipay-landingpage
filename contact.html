@@ -134,7 +134,7 @@
         <h2>Let's build your brand, together</h2>
         <p>You can reach us anytime via <a href="mailto:support@tpipay.ai">support@tpipay.ai</a></p>
 
-        <form class="contact-form" novalidate>
+        <form class="contact-form" id="contactForm">
           <div class="form-group">
             <label for="fullname">Name</label>
             <input required type="text" id="fullname" name="fullname" placeholder="Your name">
@@ -188,6 +188,11 @@
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
 
       var btn = document.querySelector(".submit-btn");
       if (btn) {
