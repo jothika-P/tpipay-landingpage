@@ -173,7 +173,7 @@
     </section>
   </main>
 
-  <script>
+    <script>
   document.addEventListener("DOMContentLoaded", function () {
     var form = document.querySelector(".contact-form");
     var phoneInput = document.getElementById("phone");
@@ -195,22 +195,41 @@
         btn.disabled = true;
       }
 
-      var formData = new FormData();
-      formData.append("fullname", document.getElementById("fullname").value);
-      formData.append("email", document.getElementById("email").value);
-      formData.append("phone", document.getElementById("phone").value);
-      formData.append("subject", document.getElementById("subject").value);
-      formData.append("message", document.getElementById("message").value);
+      var payload = {
+        fullname: document.getElementById("fullname").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        subject: document.getElementById("subject").value,
+        message: document.getElementById("message").value
+      };
 
-      fetch("https://script.google.com/macros/s/AKfycbw9NbmD2Fd8UXs8W6P0vJqicZKMeb0GsBrH6kcOytH6-mkAUj1cScoMOT0sdWz3T-oO8w/exec", {
+      // Add your Google Apps Script Web App URL here after deploying the new script
+      var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwzhn2LgtP51Ciqxqp6IfbvYqB697aaumULrTRFHgrTmS11Yp8uf6J-DDWNyQ5UPW2bIA/exec";
+
+      if (SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL") {
+        alert("Please configure your Google Apps Script URL in contact.html!");
+        if (btn) { btn.textContent = "Send Message"; btn.disabled = false; }
+        return;
+      }
+
+      fetch(SCRIPT_URL, {
         method: "POST",
-        body: formData
-      }).then(function () {
-        showSuccessPopup();
-        form.reset();
-      }).catch(function () {
-        showSuccessPopup();
-        form.reset();
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(payload)
+      }).then(function (response) {
+        return response.json();
+      }).then(function (result) {
+        if (result.success) {
+          showSuccessPopup();
+          form.reset();
+        } else {
+          alert("Error: " + result.message);
+        }
+      }).catch(function (error) {
+        console.error(error);
+        alert("An error occurred. Please try again.");
       }).finally(function () {
         if (btn) {
           btn.textContent = "Send Message";
@@ -347,6 +366,7 @@
   <script src="storefront.js"></script>
 </body>
 </html>
+
 
 
 
