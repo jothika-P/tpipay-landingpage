@@ -2,10 +2,10 @@ const STORE_KEY = "tpipay_store_config_v1";
 const CART_KEY = "tpipay_cart_v1";
 const ORDER_KEY = "tpipay_last_order_v1";
 const GST_RATE = 0.18;
-const ORDER_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycby4JKnEWfbuZ6iRZR72emIj7pO99qUiVfVP9wO3yPRg4uC9fr7x31NlTos_T6mgjwVWSw/exec";
+const ORDER_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwMl6elHS7f4r424UPutNdPD101kbsw6WIFN3_otlTOElUBLwZX_9iwUO9ogayFRvHdOA/exec";
 
 const defaultProducts = [
-  { id: "sound-box", name: "Sound Box", price: 1999, bulkPrice: null, bulkFrom: null, minQty: 1, image: "image/product/soundbox qr.png" },
+  { id: "sound-box", name: "Sound Box", price: 1150, bulkPrice: null, bulkFrom: null, minQty: 1, image: "image/product/soundbox qr.png" },
   { id: "qr-standee", name: "QR Standee", price: 299, bulkPrice: null, bulkFrom: null, minQty: 1, image: "image/product/qr standee.png" },
   { id: "pos-machine", name: "POS Machine", price: 7500, bulkPrice: 6900, bulkFrom: 10, minQty: 1, image: "image/product/Gemini_Generated_Image_ko2koyko2koyko2k-removebg-preview.png" },
   { id: "prepaid-card", name: "Prepaid Card", price: 95, bulkPrice: 95, bulkFrom: 5000, minQty: 5000, image: "image/product/prpaid card.png" },
@@ -329,6 +329,7 @@ function bindProductCards() {
       const qty = qtyInput ? Number(qtyInput.value) : 1;
       const result = addToCart(id, qty);
       showToast(result.message, result.ok ? "success" : "error");
+      setCartCount(); // Force immediate update of the navbar badge
     });
   });
 }
@@ -479,12 +480,10 @@ async function pushOrderToGoogleSheet(order) {
     status: order.status
   };
 
-  const formData = new FormData();
-  Object.entries(sheetPayload).forEach(([key, value]) => formData.append(key, String(value)));
-
   await fetch(ORDER_SHEET_WEBHOOK_URL, {
     method: "POST",
-    body: formData,
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(sheetPayload),
     mode: "no-cors",
     keepalive: true
   });
@@ -527,34 +526,26 @@ async function placeOrder(event) {
     payload.total = totals.grandTotal;
 
     if (!payload.customer.name || !payload.customer.mobile || !payload.customer.email || !payload.customer.address) {
+      showToast("Please fill in all required fields.", "error");
       return;
     }
 
     if (!/^\d{10}$/.test(payload.customer.mobile)) {
+      showToast("Please enter a valid 10-digit mobile number.", "error");
       return;
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(payload.customer.email)) {
+      showToast("Please enter a valid email address.", "error");
       return;
     }
 
     if (payload.paymentMethod !== "cod") {
+      showToast("Invalid payment gateway configuration.", "error");
       return;
     }
 
-    // Gateway-ready hook for backend payment order creation.
-    try {
-      const response = await fetch("/api/payments/create-order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      if (response.ok) {
-        const data = await response.json();
-        payload.gatewayOrderId = data.gatewayOrderId || null;
-      }
-    } catch (_) {}
-
+    // No backend server — order is confirmed directly via Google Sheets webhook.
     payload.status = "confirmed";
     localStorage.setItem(ORDER_KEY, JSON.stringify(payload));
     localStorage.setItem(CART_KEY, JSON.stringify([]));
@@ -568,13 +559,6 @@ async function placeOrder(event) {
       ]);
     } catch (_) {}
 
-    // Webhook-ready callback notifier for real-time status update.
-    fetch("/api/webhooks/payment-status", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ orderId: payload.id, status: payload.status })
-    }).catch(() => {});
-
     window.location.href = "order-confirmation.html";
   } finally {
     if (payBtn) {
@@ -583,6 +567,134 @@ async function placeOrder(event) {
     }
   }
 }
+function downloadInvoice(order) {
+  const fmtDate = (date) => date.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+  const createdAt = order.createdAt ? new Date(order.createdAt) : new Date();
+  const estDelivery = new Date(createdAt.getTime());
+  estDelivery.setDate(estDelivery.getDate() + 7);
+
+  const itemRows = order.items.map((item) => `
+    <tr>
+      <td style="padding:10px 12px;border-bottom:1px solid #f0f0f0;">${item.name}</td>
+      <td style="padding:10px 12px;border-bottom:1px solid #f0f0f0;text-align:center;">${item.qty}</td>
+      <td style="padding:10px 12px;border-bottom:1px solid #f0f0f0;text-align:right;">Rs ${Number(item.unitPrice).toLocaleString("en-IN")}</td>
+      <td style="padding:10px 12px;border-bottom:1px solid #f0f0f0;text-align:right;">Rs ${Number(item.lineTotal).toLocaleString("en-IN")}</td>
+      <td style="padding:10px 12px;border-bottom:1px solid #f0f0f0;text-align:right;">Rs ${Number(item.gst || 0).toLocaleString("en-IN")}</td>
+      <td style="padding:10px 12px;border-bottom:1px solid #f0f0f0;text-align:right;font-weight:600;">Rs ${Number(item.totalWithGst || item.lineTotal).toLocaleString("en-IN")}</td>
+    </tr>`).join("");
+
+  const subTotal = order.totals ? order.totals.subTotal : order.items.reduce((s, i) => s + i.lineTotal, 0);
+  const gstTotal = order.totals ? order.totals.gstTotal : 0;
+  const grandTotal = order.totals ? order.totals.grandTotal : subTotal;
+
+  const invoiceHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice ${order.id} | TPIPAY</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; font-size: 14px; color: #222; background: #fff; padding: 40px; }
+    .inv-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 2px solid #5C469C; }
+    .inv-brand h1 { font-size: 22px; color: #5C469C; font-weight: 800; }
+    .inv-brand p { font-size: 12px; color: #666; margin-top: 4px; line-height: 1.6; }
+    .inv-meta { text-align: right; }
+    .inv-meta h2 { font-size: 28px; color: #5C469C; font-weight: 800; letter-spacing: 1px; }
+    .inv-meta p { font-size: 12px; color: #666; margin-top: 4px; }
+    .inv-badge { display: inline-block; background: #e6f4ea; color: #137333; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-top: 8px; }
+    .inv-parties { display: flex; gap: 40px; margin-bottom: 32px; }
+    .inv-party { flex: 1; }
+    .inv-party h4 { font-size: 11px; text-transform: uppercase; color: #999; letter-spacing: 1px; margin-bottom: 8px; }
+    .inv-party p { font-size: 13px; line-height: 1.7; color: #333; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+    thead { background: #5C469C; color: #fff; }
+    thead th { padding: 12px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; text-align: left; }
+    thead th:not(:first-child) { text-align: center; }
+    thead th:last-child, thead th:nth-child(3), thead th:nth-child(4), thead th:nth-child(5) { text-align: right; }
+    tbody tr:nth-child(even) { background: #fafafa; }
+    .totals-box { margin-left: auto; width: 320px; }
+    .totals-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 13px; border-bottom: 1px solid #f0f0f0; }
+    .totals-row.grand { font-size: 16px; font-weight: 800; color: #5C469C; border-bottom: none; padding-top: 12px; }
+    .inv-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 11px; color: #999; }
+    .inv-footer strong { color: #5C469C; }
+    @media print { body { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <div class="inv-header">
+    <div class="inv-brand">
+      <h1>TPIPAY</h1>
+      <p>TPIPAY Financial Technology Private Limited<br>
+         W-303 3rd Floor, Sunrise Chambers,<br>
+         22 Ulsoor Road, Bengaluru, Karnataka 560042<br>
+         support@tpipay.ai | +91 9040888400</p>
+    </div>
+    <div class="inv-meta">
+      <h2>INVOICE</h2>
+      <p><strong>Invoice No:</strong> ${order.id}</p>
+      <p><strong>Date:</strong> ${fmtDate(createdAt)}</p>
+      <p><strong>Est. Delivery:</strong> ${fmtDate(estDelivery)}</p>
+      <span class="inv-badge">✓ ${order.paymentMethod === "cod" ? "Cash on Delivery" : "Online Payment"}</span>
+    </div>
+  </div>
+
+  <div class="inv-parties">
+    <div class="inv-party">
+      <h4>Billed To</h4>
+      <p><strong>${order.customer.name}</strong><br>
+         ${order.customer.address}<br>
+         ${order.customer.mobile}<br>
+         ${order.customer.email}
+         ${order.customer.gst ? "<br>GSTIN: " + order.customer.gst : ""}
+      </p>
+    </div>
+    <div class="inv-party">
+      <h4>Sold By</h4>
+      <p><strong>TPIPAY Financial Technology Pvt. Ltd.</strong><br>
+         W-303, Sunrise Chambers, 22 Ulsoor Road<br>
+         Bengaluru, Karnataka 560042<br>
+         support@tpipay.ai</p>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th style="text-align:center;">Qty</th>
+        <th style="text-align:right;">Unit Price</th>
+        <th style="text-align:right;">Base Total</th>
+        <th style="text-align:right;">GST (18%)</th>
+        <th style="text-align:right;">Total</th>
+      </tr>
+    </thead>
+    <tbody>${itemRows}</tbody>
+  </table>
+
+  <div class="totals-box">
+    <div class="totals-row"><span>Subtotal</span><span>Rs ${Number(subTotal).toLocaleString("en-IN")}</span></div>
+    <div class="totals-row"><span>GST (18%)</span><span>Rs ${Number(gstTotal).toLocaleString("en-IN")}</span></div>
+    <div class="totals-row grand"><span>Grand Total</span><span>Rs ${Number(grandTotal).toLocaleString("en-IN")}</span></div>
+  </div>
+
+  <div class="inv-footer">
+    <div><strong>TPIPAY</strong> — Empowering Digital Payments Across India</div>
+    <div>This is a computer-generated invoice. No signature required.</div>
+  </div>
+</body>
+</html>`;
+
+  const blob = new Blob([invoiceHTML], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `TPIPAY-Invoice-${order.id}.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
 function renderConfirmation() {
   const box = document.getElementById("orderSummaryBox");
   if (!box) return;
@@ -619,8 +731,8 @@ function renderConfirmation() {
           <p>Order Date: ${fmtDate(createdAt)} <span class="dot">•</span> Estimated delivery: ${fmtDate(estDelivery)}</p>
         </div>
         <div class="order-confirm-actions">
-          <a href="#" class="order-confirm-btn ghost">Download Invoice</a>
-          <a href="contact.html" class="order-confirm-btn primary">Track Order</a>
+          <a href="#" class="order-confirm-btn ghost" onclick="var o=JSON.parse(localStorage.getItem('tpipay_last_order_v1')); if(o) downloadInvoice(o); return false;">Download Invoice</a>
+          <a href="contact.html?orderId=${order.id}" class="order-confirm-btn primary">Track Order</a>
         </div>
       </div>
 

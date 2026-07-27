@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation | TPIPAY</title>
+  <link rel="icon" type="image/png" href="image/icon and logo/favicon.png?v=1">
+  <link rel="stylesheet" href="frontcss/front.css">
+  <link rel="stylesheet" href="frontcss/navbar.css">
+  <link rel="stylesheet" href="frontcss/footer.css">
+  <link rel="stylesheet" href="frontcss/storefront.css">
+  <style>
+    .confirm-container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .order-confirm-hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .order-confirm-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      background-color: #e6f4ea;
+      color: #137333;
+      border-radius: 50%;
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .order-confirm-hero h1 {
+      font-size: 2.5rem;
+      margin: 10px 0;
+      color: #137333;
+    }
+    .order-confirm-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 15px;
+      transition: all 0.2s ease;
+    }
+    .order-confirm-btn.primary {
+      background-color: #0070f3;
+      color: #fff;
+    }
+    .order-confirm-btn.ghost {
+      background-color: transparent;
+      color: #0070f3;
+      border: 1px solid #0070f3;
+      margin-right: 10px;
+    }
+    .order-confirm-panel {
+      background: #ffffff;
+      border: 1px solid #eaeaea;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .order-confirm-panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 600px) {
+      .order-confirm-panel-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+    }
+    .order-confirm-panel-head h2 {
+      margin: 0 0 5px 0;
+      font-size: 1.3rem;
+    }
+    .order-confirm-panel-head p {
+      margin: 0;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .order-confirm-items {
+      margin-bottom: 25px;
+    }
+    .order-confirm-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f9f9f9;
+    }
+    .order-confirm-item-main {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .order-confirm-item-main img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+    .order-confirm-item h3 {
+      margin: 0 0 4px 0;
+      font-size: 1rem;
+    }
+    .order-confirm-item p {
+      margin: 0;
+      color: #666;
+      font-size: 0.85rem;
+    }
+    .order-confirm-item-price {
+      font-weight: 600;
+    }
+    .order-confirm-footer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 20px;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 600px) {
+      .order-confirm-footer {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+    .order-confirm-footer span.label {
+      display: block;
+      color: #999;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .order-confirm-footer p {
+      margin: 0;
+      color: #333;
+      line-height: 1.4;
+    }
+    .dot {
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+  <header id="header" class="header-section">
+    <div class="header-container">
+      <a href="/" class="logo"><img src="image/big banner/logotpi.png" alt="TPIPAY Logo"></a>
+      <button class="menu-toggle" aria-label="Toggle Navigation" type="button">
+        <span class="menu-icon">&#9776;</span>
+      </button>
+      <nav class="main-nav">
+        <div class="divide">
+          <ul>
+            <li><a href="/"><span>Home</span></a></li>
+            <li><a href="/#about"><span>About</span></a></li>
+            <li><a href="service.html"><span>Service</span></a></li>
+            <li><a href="products.html"><span>Product</span></a></li>
+            <li><a href="careers.html"><span>Careers</span></a></li>
+            <li><a href="contact.html"><span>Contact</span></a></li>
+          </ul>
+        </div>
+        <a href="cart.html" class="cart-btn" aria-label="Cart">
+          <svg class="cart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H7"></path></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="confirm-container">
+      <div id="orderSummaryBox">
+        <!-- Rendered by storefront.js renderConfirmation() -->
+      </div>
+    </div>
+  </main>
+
+  <footer id="contact" class="footer-section">
+    <div class="footer-container footer-top">
+      <div class="footer-brand">
+        <img src="image/icon and logo/tpipay_logo_white.png" alt="TPIPAY Logo">
+        <p class="footer-brand-name">TPIPAY Financial Technology Private Limited</p>
+        <p class="footer-brand-address">W-303 3rd Floor, Sunrise Chambers,<br>22 Ulsoor Road,<br>Bengaluru, Karnataka, India, 560042</p>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2025 Tpipay Financial Technology Private Limited. All rights reserved.</p>
+  </footer>
+
+  <script src="storefront.js"></script>
+</body>
+</html>

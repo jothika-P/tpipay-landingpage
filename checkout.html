@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Checkout | TPIPAY</title>
+  <link rel="icon" type="image/png" href="image/icon and logo/favicon.png?v=1">
+  <link rel="stylesheet" href="frontcss/front.css">
+  <link rel="stylesheet" href="frontcss/navbar.css">
+  <link rel="stylesheet" href="frontcss/footer.css">
+  <link rel="stylesheet" href="frontcss/storefront.css">
+  <style>
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    @media (max-width: 768px) {
+      .checkout-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .checkout-card {
+      background: var(--bg-card, #ffffff);
+      border: 1px solid #eaeaea;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .checkout-card h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 10px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #333;
+      font-size: 0.9rem;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: #0070f3;
+      outline: none;
+    }
+    .summary-box {
+      background: #fafafa;
+    }
+    .checkout-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .checkout-thumb {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .checkout-totals-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 12px 0;
+      font-size: 0.95rem;
+    }
+    .checkout-totals-row.grand-total {
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-top: 1px solid #ddd;
+      padding-top: 15px;
+      margin-top: 15px;
+    }
+    .pay-btn-wrap {
+      margin-top: 25px;
+    }
+    .checkout-badge {
+      display: inline-block;
+      background: #e6f4ea;
+      color: #137333;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header id="header" class="header-section">
+    <div class="header-container">
+      <a href="/" class="logo"><img src="image/big banner/logotpi.png" alt="TPIPAY Logo"></a>
+      <button class="menu-toggle" aria-label="Toggle Navigation" type="button">
+        <span class="menu-icon">&#9776;</span>
+      </button>
+      <nav class="main-nav">
+        <div class="divide">
+          <ul>
+            <li><a href="/"><span>Home</span></a></li>
+            <li><a href="/#about"><span>About</span></a></li>
+            <li><a href="service.html"><span>Service</span></a></li>
+            <li><a href="products.html"><span>Product</span></a></li>
+            <li><a href="careers.html"><span>Careers</span></a></li>
+            <li><a href="contact.html"><span>Contact</span></a></li>
+          </ul>
+        </div>
+        <a href="cart.html" class="cart-btn" aria-label="Cart">
+          <svg class="cart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H7"></path></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="checkout-layout">
+      <!-- Shipping Form -->
+      <section class="checkout-card">
+        <h2>Delivery & Contact Information</h2>
+        <form id="checkoutForm">
+          <!-- Required by storefront.js placeOrder script to prevent TypeError -->
+          <input type="hidden" name="gateway" value="cod">
+          
+          <div class="form-group">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="name" required placeholder="Enter your full name">
+          </div>
+          
+          <div class="form-group">
+            <label for="mobileNo">Mobile Number (10 digits) *</label>
+            <input type="tel" id="mobileNo" name="mobile" required pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number">
+          </div>
+          
+          <div class="form-group">
+            <label for="emailAddr">Email Address *</label>
+            <input type="email" id="emailAddr" name="email" required placeholder="Enter your email address">
+          </div>
+          
+          <div class="form-group">
+            <label for="deliveryAddr">Shipping & Delivery Address *</label>
+            <textarea id="deliveryAddr" name="address" rows="4" required placeholder="Enter your complete delivery address with PIN code"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="gstNo">GSTIN (Optional)</label>
+            <input type="text" id="gstNo" name="gst" placeholder="Enter your GST number if claiming Input Tax Credit">
+          </div>
+        </form>
+      </section>
+
+      <!-- Order Summary Card -->
+      <section class="checkout-card summary-box">
+        <h2>Order Summary</h2>
+        <span class="checkout-badge">COD / Google Sheets Confirmed</span>
+        
+        <div id="checkoutSummary">
+          <!-- Dynamically populated from storefront.js -->
+        </div>
+
+        <div class="checkout-totals">
+          <div class="checkout-totals-row">
+            <span>Sub Total:</span>
+            <strong id="checkoutSubTotal">Rs 0</strong>
+          </div>
+          <div class="checkout-totals-row">
+            <span>GST (18%):</span>
+            <strong id="checkoutGstTotal">Rs 0</strong>
+          </div>
+          <div class="checkout-totals-row grand-total">
+            <span>Grand Total:</span>
+            <strong id="checkoutTotal">Rs 0</strong>
+          </div>
+        </div>
+
+        <div class="pay-btn-wrap">
+          <button type="submit" form="checkoutForm" id="payNowBtn" class="primary-btn" style="width: 100%; border: none; cursor: pointer; text-align: center; justify-content: center;">
+            Pay And Confirm Order
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="contact" class="footer-section">
+    <div class="footer-container footer-top">
+      <div class="footer-brand">
+        <img src="image/icon and logo/tpipay_logo_white.png" alt="TPIPAY Logo">
+        <p class="footer-brand-name">TPIPAY Financial Technology Private Limited</p>
+        <p class="footer-brand-address">W-303 3rd Floor, Sunrise Chambers,<br>22 Ulsoor Road,<br>Bengaluru, Karnataka, India, 560042</p>
+        <div class="footer-meta">
+          <p><strong>Phone:</strong> +91 9040888400</p>
+          <p><strong>Email:</strong> <a href="mailto:support@tpipay.ai">support@tpipay.ai</a></p>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h4>Services</h4>
+        <ul>
+          <li>Prepaid Card API</li>
+          <li>Connected Banking Payout API</li>
+          <li>UPI Collection API</li>
+          <li>Static QR Collection</li>
+          <li>Static QR Standee</li>
+          <li>Sound Box</li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/#aboutPreview">About Us</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2025 Tpipay Financial Technology Private Limited. All rights reserved.</p>
+  </footer>
+
+  <script src="storefront.js"></script>
+</body>
+</html>
