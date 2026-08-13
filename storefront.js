@@ -94,12 +94,6 @@ const homeData = {
     { value: "2024", label: "Founded", countTo: 2024 },
     { value: "24/7", label: "Support", countTo: 24, suffix: "/7" }
   ],
-  mobileApp: {
-    subtitle: "OUR MOBILE APP",
-    title: "One App For Payments, Collection And Business Growth",
-    description: "Accept payments, track transactions, and manage your merchant operations directly from the TPIPAY app with a seamless experience.",
-    image: "image/big banner/app image.png"
-  },
   faq: [
     {
       question: "What payment services does TPIPAY provide for merchants?",
@@ -164,8 +158,8 @@ const homeData = {
   },
   about: {
     title: "About Tpipay",
-    firstParagraph: "Tpipay Financial Technology Private Limited is a forward-thinking company specializing in financial software development and API integration. We empower financial institutions with secure, scalable, and compliant digital solutions.",
-    secondParagraph: "Our mission is to simplify complex banking operations through automation and innovation, helping small finance banks, NBFCs, cooperative societies, and fintech startups transform their digital infrastructure.",
+    firstParagraph: "Tpipay Financial Technology Private Limited is a forward-thinking B2B financial technology company specializing in payment software, API services, and merchant hardware. Alongside our software and API solutions, we design, source, and distribute physical payment products such as sound boxes, QR standees, POS machines, and prepaid cards.",
+    secondParagraph: "Our mission is to simplify complex banking and collection operations through automation and innovation, helping banks, NBFCs, cooperative societies, fintech startups, and merchants grow with secure, scalable, and compliant digital and physical payment solutions.",
     stats: [
       { value: "50+", label: "Financial Institutions" },
       { value: "99.9%", label: "Uptime Guarantee" },
@@ -173,7 +167,7 @@ const homeData = {
       { value: "24/7", label: "Support Available" }
     ],
     highlights: [
-      { title: "Our Mission", description: "To revolutionize financial operations with innovative, secure, and scalable software solutions." },
+      { title: "Our Mission", description: "To revolutionize financial operations with innovative, secure, and scalable software, API, and merchant hardware solutions." },
       { title: "Our Vision", description: "To become India's most trusted partner in financial technology transformation." },
       { title: "Our Values", description: "Trust, innovation, compliance, and customer-centric excellence in everything we do." },
       { title: "Company Registration", description: "U62099OD2024PTC045666" },
@@ -847,10 +841,6 @@ function renderBulkHomePage() {
   const exclusiveChartValue = document.getElementById("exclusiveChartValue");
   const statsWrap = document.getElementById("bulkStats");
   const valueSubtitle = document.getElementById("valueSubtitle");
-  const appSubtitle = document.getElementById("appSubtitle");
-  const appTitle = document.getElementById("appTitle");
-  const appDescription = document.getElementById("appDescription");
-  const appImage = document.getElementById("appImage");
   const faqModernList = document.getElementById("faqModernList");
   const valueTitle = document.getElementById("valueTitle");
   const valueDescription = document.getElementById("valueDescription");
@@ -908,8 +898,7 @@ function renderBulkHomePage() {
   if (serviceGrid) {
     serviceGrid.innerHTML = homeData.services.cards.map((card, index) => {
       const imageSource = card.image
-        || (homeData.products.items[index] && homeData.products.items[index].image)
-        || homeData.mobileApp.image;
+        || (homeData.products.items[index] && homeData.products.items[index].image);
       const link = card.href || "service.html";
       return `
       <article class="service-showcase-row reveal-on-scroll">
@@ -971,10 +960,6 @@ function renderBulkHomePage() {
     bindStatsCounter(statsWrap);
   }
 
-  if (appSubtitle) appSubtitle.textContent = homeData.mobileApp.subtitle;
-  if (appTitle) appTitle.textContent = homeData.mobileApp.title;
-  if (appDescription) appDescription.textContent = homeData.mobileApp.description;
-  if (appImage) appImage.setAttribute("src", homeData.mobileApp.image);
   if (faqModernList) {
     faqModernList.innerHTML = homeData.faq.map((item, index) => {
       const question = typeof item === "string" ? item : item.question;
