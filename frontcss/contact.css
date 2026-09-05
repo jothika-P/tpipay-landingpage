@@ -478,3 +478,122 @@ body {
     animation: none !important;
   }
 }
+
+/* Office Addresses Section */
+.office-addresses-section {
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid #E4DBF1;
+}
+
+.office-addresses-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.office-addresses-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--brand-deep, #0F172A);
+  margin-bottom: 8px;
+}
+
+.office-addresses-header p {
+  font-size: 16px;
+  color: #64748B;
+  margin: 0;
+}
+
+.office-addresses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.office-card {
+  background: #FFFFFF;
+  border: 1px solid #E4DBF1;
+  border-radius: 16px;
+  padding: 28px 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.office-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(143, 106, 214, 0.15);
+}
+
+.office-card-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: #F1F5F9;
+  color: #475569;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.office-card-badge.corporate {
+  background: #E8F5E9;
+  color: #1B5E20;
+}
+
+.office-card-badge.operational {
+  background: #E3F2FD;
+  color: #0D47A1;
+}
+
+.office-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brand-deep, #0F172A);
+  margin: 0 0 12px;
+}
+
+.office-address {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0 0 20px;
+  flex-grow: 1;
+}
+
+.office-map-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-primary, #8F6AD6);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.office-map-link:hover {
+  color: var(--brand-deep, #5B32A8);
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .office-addresses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .office-addresses-grid {
+    grid-template-columns: 1fr;
+  }
+  .office-addresses-header h2 {
+    font-size: 24px;
+  }
+}
+

@@ -14,7 +14,7 @@ const defaultProducts = [
 
 const homeData = {
   hero: {
-    eyebrow: "TPIPAY FINANCIAL TECHNOLOGY",
+    eyebrow: "TPIPAY",
     title: "Elevate Your Financial Future With TPIPAY",
     description: "Empowering digital payments with speed, security, and seamless innovation.",
     ctaPrimary: { label: "Partner Login", href: "https://banking.mytpipay.com/login" },
@@ -158,7 +158,7 @@ const homeData = {
   },
   about: {
     title: "About Tpipay",
-    firstParagraph: "Tpipay Financial Technology Private Limited is a forward-thinking B2B financial technology company specializing in payment software, API services, and merchant hardware. Alongside our software and API solutions, we design, source, and distribute physical payment products such as sound boxes, QR standees, POS machines, and prepaid cards.",
+    firstParagraph: "TPIPAY is a forward-thinking B2B financial technology company specializing in payment software, API services, and merchant hardware. Alongside our software and API solutions, we design, source, and distribute physical payment products such as sound boxes, QR standees, POS machines, and prepaid cards.",
     secondParagraph: "Our mission is to simplify complex banking and collection operations through automation and innovation, helping banks, NBFCs, cooperative societies, fintech startups, and merchants grow with secure, scalable, and compliant digital and physical payment solutions.",
     stats: [
       { value: "50+", label: "Financial Institutions" },
@@ -618,9 +618,9 @@ function downloadInvoice(order) {
   <div class="inv-header">
     <div class="inv-brand">
       <h1>TPIPAY</h1>
-      <p>TPIPAY Financial Technology Private Limited<br>
-         W-303 3rd Floor, Sunrise Chambers,<br>
-         22 Ulsoor Road, Bengaluru, Karnataka 560042<br>
+      <p>TPIPAY<br>
+         Corporate Office: W-303 3rd Floor, Sunrise Chambers, 22 Ulsoor Road, Bengaluru, Karnataka 560042<br>
+         Registered Office: Plot No. 1374, Jagannath Sadak Road, Meherpalli, Bhubaneswar, Odisha 751006<br>
          support@tpipay.ai | +91 9040888400</p>
     </div>
     <div class="inv-meta">
@@ -644,9 +644,9 @@ function downloadInvoice(order) {
     </div>
     <div class="inv-party">
       <h4>Sold By</h4>
-      <p><strong>TPIPAY Financial Technology Pvt. Ltd.</strong><br>
-         W-303, Sunrise Chambers, 22 Ulsoor Road<br>
-         Bengaluru, Karnataka 560042<br>
+      <p><strong>TPIPAY</strong><br>
+         Corporate: W-303, Sunrise Chambers, 22 Ulsoor Road, Bengaluru 560042<br>
+         Registered: Plot No. 1374, Jagannath Sadak Road, Bhubaneswar 751006<br>
          support@tpipay.ai</p>
     </div>
   </div>
