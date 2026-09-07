@@ -621,7 +621,7 @@ function downloadInvoice(order) {
       <p>TPIPAY<br>
          Corporate Office: W-303 3rd Floor, Sunrise Chambers, 22 Ulsoor Road, Bengaluru, Karnataka 560042<br>
          Registered Office: Plot No. 1374, Jagannath Sadak Road, Meherpalli, Bhubaneswar, Odisha 751006<br>
-         support@tpipay.ai | +91 9040888400</p>
+         support@tpipay.ai | +91 8249616034</p>
     </div>
     <div class="inv-meta">
       <h2>INVOICE</h2>
@@ -756,7 +756,7 @@ function renderConfirmation() {
         </div>
         <div>
           <span class="label">Support</span>
-          <p>24/7 assistance<br>+91 9040888400</p>
+          <p>24/7 assistance<br>+91 8249616034</p>
         </div>
       </div>
     </div>
