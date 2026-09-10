@@ -17,8 +17,8 @@ const homeData = {
     eyebrow: "TPIPAY",
     title: "Elevate Your Financial Future With TPIPAY",
     description: "Empowering digital payments with speed, security, and seamless innovation.",
-    ctaPrimary: { label: "Partner Login", href: "https://banking.mytpipay.com/login" },
-    ctaSecondary: { label: "Become Partner", href: "https://banking.mytpipay.com/sign-up" }
+    ctaPrimary: { label: "Partner Login", href: "https://merchant.tpipay.ai/" },
+    ctaSecondary: { label: "Become Partner", href: "https://merchant.tpipay.ai/sign-up" }
   },
   // partners: {
   //   title: "Our Banking & Payment Network",
