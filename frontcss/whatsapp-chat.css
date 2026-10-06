@@ -1,0 +1,315 @@
+.tpipay-wa-widget {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9990;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tpipay-wa-card {
+  position: relative;
+  width: min(320px, calc(100vw - 40px));
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(12, 19, 79, 0.2);
+  color: #202124;
+}
+
+.tpipay-wa-card[hidden] {
+  display: none;
+}
+
+.tpipay-wa-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.tpipay-wa-card-link:focus-visible,
+.tpipay-wa-close:focus-visible,
+.tpipay-wa-button:focus-visible {
+  outline: 3px solid #5c469c;
+  outline-offset: 3px;
+}
+
+.tpipay-wa-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-right: 20px;
+}
+
+.tpipay-wa-avatar {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  place-items: center;
+  border-radius: 50%;
+  background: #128c7e;
+  color: #fff;
+}
+
+.tpipay-wa-avatar svg {
+  width: 23px;
+  height: 23px;
+}
+
+.tpipay-wa-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.tpipay-wa-status {
+  margin: 2px 0 0;
+  color: #687076;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.tpipay-wa-message {
+  margin: 12px 0 0;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.tpipay-wa-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #687076;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.tpipay-wa-close:hover {
+  background: #f1f5f9;
+}
+
+.tpipay-wa-button {
+  display: inline-flex;
+  min-height: 52px;
+  min-width: 52px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  color: #fff;
+  text-decoration: none;
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.tpipay-wa-button:hover {
+  transform: translateY(-2px);
+  background: #1fbd5b;
+}
+
+.tpipay-wa-button svg {
+  width: 28px;
+  height: 28px;
+}
+
+.tpipay-wa-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+}
+
+.tpipay-wa-popup[hidden] {
+  display: none;
+}
+
+html.tpipay-wa-popup-open {
+  overflow: hidden !important;
+}
+
+.tpipay-wa-popup-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(4, 15, 32, 0.76);
+}
+
+.tpipay-wa-popup-dialog {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: min(610px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  padding: 72px 48px 58px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+  color: #102344;
+  text-align: center;
+  outline: none;
+}
+
+.tpipay-wa-popup-close {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #85898e;
+  cursor: pointer;
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.tpipay-wa-popup-close:hover {
+  background: #f1f5f9;
+}
+
+.tpipay-wa-popup-close:focus-visible,
+.tpipay-wa-popup-cta:focus-visible {
+  outline: 3px solid #5c469c;
+  outline-offset: 4px;
+}
+
+.tpipay-wa-popup-icon {
+  display: grid;
+  width: 100px;
+  height: 100px;
+  flex: 0 0 100px;
+  place-items: center;
+  border-radius: 50%;
+  background: #effaff;
+  color: #128c5a;
+}
+
+.tpipay-wa-popup-icon svg {
+  width: 46px;
+  height: 46px;
+}
+
+.tpipay-wa-popup-title {
+  margin: 18px 0 10px;
+  color: #102344;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.tpipay-wa-popup-description {
+  max-width: 500px;
+  margin: 0;
+  color: #77808b;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.tpipay-wa-popup-cta {
+  display: inline-flex;
+  width: min(446px, 100%);
+  min-height: 76px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  background: #20d366;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.14);
+  color: #fff;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.tpipay-wa-popup-cta:hover {
+  transform: translateY(-1px);
+  background: #1fbd5b;
+}
+
+.tpipay-wa-popup-cta svg {
+  width: 25px;
+  height: 25px;
+  flex: 0 0 25px;
+}
+
+@media (max-width: 480px) {
+  .tpipay-wa-widget {
+    right: 16px;
+    bottom: 16px;
+    gap: 12px;
+  }
+
+  .tpipay-wa-card {
+    width: min(300px, calc(100vw - 32px));
+  }
+
+  .tpipay-wa-popup-dialog {
+    padding: 58px 22px 30px;
+    border-radius: 16px;
+  }
+
+  .tpipay-wa-popup-close {
+    top: 12px;
+    right: 12px;
+  }
+
+  .tpipay-wa-popup-icon {
+    width: 78px;
+    height: 78px;
+    flex-basis: 78px;
+  }
+
+  .tpipay-wa-popup-icon svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .tpipay-wa-popup-title {
+    margin-top: 16px;
+    font-size: 27px;
+  }
+
+  .tpipay-wa-popup-description {
+    font-size: 16px;
+  }
+
+  .tpipay-wa-popup-cta {
+    min-height: 62px;
+    margin-top: 24px;
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tpipay-wa-button,
+  .tpipay-wa-popup-cta {
+    transition: none;
+  }
+}
