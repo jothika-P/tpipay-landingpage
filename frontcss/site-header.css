@@ -7,6 +7,81 @@
   box-shadow: 0 4px 18px rgba(12, 19, 79, 0.08);
 }
 
+.sticky-site-image-icons {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9990;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sticky-site-image-item {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  outline: none;
+}
+
+.sticky-site-image-item > img {
+  display: block;
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  object-fit: contain;
+}
+
+.sticky-site-image-tooltip {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 12px);
+  z-index: 1;
+  width: min(260px, calc(100vw - 100px));
+  padding: 14px 16px;
+  border: 1px solid rgba(12, 19, 79, 0.1);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(12, 19, 79, 0.2);
+  color: #0c134f;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) translateX(-4px);
+  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+  visibility: hidden;
+}
+
+.sticky-site-image-tooltip strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.sticky-site-image-tooltip p {
+  margin: 5px 0 0;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.sticky-site-image-item:hover .sticky-site-image-tooltip,
+.sticky-site-image-item:focus .sticky-site-image-tooltip,
+.sticky-site-image-item:focus-within .sticky-site-image-tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-50%) translateX(0);
+  visibility: visible;
+}
+
+.sticky-site-image-item:focus-visible > img {
+  outline: 2px solid #5c469c;
+  outline-offset: 3px;
+}
+
 .header-section .header-container {
   display: grid;
   width: 100%;
@@ -471,6 +546,10 @@
 }
 
 @media (max-width: 480px) {
+  .sticky-site-image-icons {
+    left: 12px;
+  }
+
   .header-section .header-container {
     min-height: 72px;
     grid-template-rows: 72px;
@@ -489,6 +568,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .sticky-site-image-tooltip {
+    transition: none;
+  }
+
   .header-section .nav-chevron,
   .header-section .nav-dropdown,
   .header-section .main-nav,

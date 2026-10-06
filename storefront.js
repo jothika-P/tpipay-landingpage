@@ -588,7 +588,7 @@ function downloadInvoice(order) {
   <title>Invoice ${order.id} | TPIPAY</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; font-size: 14px; color: #222; background: #fff; padding: 40px; }
+    body { font-family: "Onest", sans-serif; font-size: 14px; color: #222; background: #fff; padding: 40px; }
     .inv-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 2px solid #5C469C; }
     .inv-brand h1 { font-size: 22px; color: #5C469C; font-weight: 800; }
     .inv-brand p { font-size: 12px; color: #666; margin-top: 4px; line-height: 1.6; }
@@ -1240,6 +1240,84 @@ function bindAppPhonesScrollBehavior() {
   window.addEventListener("scroll", onScroll, { passive: true });
 }
 
+function bindHeroCarousel() {
+  const carousel = document.querySelector("[data-hero-carousel]");
+  if (!carousel) return;
+
+  const slides = Array.from(carousel.querySelectorAll(".bulk-hero-slide"));
+  const dots = Array.from(carousel.querySelectorAll("[data-carousel-slide]"));
+  const previousButton = carousel.querySelector("[data-carousel-previous]");
+  const nextButton = carousel.querySelector("[data-carousel-next]");
+  if (slides.length < 2 || dots.length !== slides.length || !previousButton || !nextButton) return;
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let activeIndex = 0;
+  let intervalId;
+
+  const showSlide = (index) => {
+    activeIndex = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      const isActive = slideIndex === activeIndex;
+      slide.classList.toggle("is-active", isActive);
+      slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+    });
+    dots.forEach((dot, dotIndex) => {
+      const isActive = dotIndex === activeIndex;
+      dot.classList.toggle("is-active", isActive);
+      if (isActive) {
+        dot.setAttribute("aria-current", "true");
+      } else {
+        dot.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const stopAutoplay = () => {
+    window.clearInterval(intervalId);
+    intervalId = undefined;
+  };
+  const startAutoplay = () => {
+    stopAutoplay();
+    if (reducedMotion.matches) return;
+    intervalId = window.setInterval(() => showSlide(activeIndex + 1), 5000);
+  };
+
+  previousButton.addEventListener("click", () => {
+    showSlide(activeIndex - 1);
+  });
+  nextButton.addEventListener("click", () => {
+    showSlide(activeIndex + 1);
+  });
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      showSlide(index);
+    });
+  });
+  let touchStartX;
+  carousel.addEventListener("pointerdown", (event) => {
+    if (event.pointerType !== "touch" || event.target.closest("button")) return;
+    touchStartX = event.clientX;
+  });
+  carousel.addEventListener("pointerup", (event) => {
+    if (touchStartX === undefined) return;
+    const swipeDistance = event.clientX - touchStartX;
+    touchStartX = undefined;
+    if (Math.abs(swipeDistance) < 45) return;
+    showSlide(activeIndex + (swipeDistance < 0 ? 1 : -1));
+  });
+  carousel.addEventListener("pointercancel", () => {
+    touchStartX = undefined;
+  });
+  carousel.addEventListener("mouseenter", stopAutoplay);
+  carousel.addEventListener("mouseleave", startAutoplay);
+  carousel.addEventListener("focusin", stopAutoplay);
+  carousel.addEventListener("focusout", (event) => {
+    if (!carousel.contains(event.relatedTarget)) startAutoplay();
+  });
+  reducedMotion.addEventListener("change", startAutoplay);
+  startAutoplay();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector(".menu-toggle");
   const mainNav = document.querySelector(".main-nav");
@@ -1259,6 +1337,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderAdminProducts();
   bindAdminForm();
   renderBulkHomePage();
+  bindHeroCarousel();
   bindAppPhonesScrollBehavior();
 
   const missionImage = document.getElementById("missionImage");
