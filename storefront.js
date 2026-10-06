@@ -61,13 +61,13 @@ const homeData = {
       //   image: "image/serviceimage/prepaid service-optimized.png",
       //   href: "prepaid-services.html"
       // },
-      {
-        title: "Connected Banking Payout API",
-        description: "Instant bank transfer (IMPS/NEFT/RTGS) to any beneficiary account with real-time status and auto reconciliation.",
-        icon: "image/serviceimage/digital pay.png",
-        image: "image/serviceimage/bank collection-optimized.png",
-        href: "connected-banking-payout.html"
-      },
+      // {
+      //   title: "Connected Banking Payout API",
+      //   description: "Instant bank transfer (IMPS/NEFT/RTGS) to any beneficiary account with real-time status and auto reconciliation.",
+      //   icon: "image/serviceimage/digital pay.png",
+      //   image: "image/serviceimage/bank collection-optimized.png",
+      //   href: "connected-banking-payout.html"
+      // },
     ]
   },
   products: {
@@ -75,7 +75,7 @@ const homeData = {
     description: "Hardware and onboarding kits designed for fast collections and easy setup.",
     items: [
       { name: "Sound Box", image: "image/product/soundbox qr.png", path: "products.html#productGrid" },
-      { name: "QR Standee", image: "image/product/qr standee.png", path: "products.html#productGrid" },
+      // { name: "QR Standee", image: "image/product/qr standee.png", path: "products.html#productGrid" },
       { name: "POS Machine", image: "image/product/Gemini_Generated_Image_ko2koyko2koyko2k-removebg-preview.png", path: "products.html#productGrid" },
       { name: "Prepaid Card", image: "image/product/prpaid card.png", path: "products.html#productGrid" },
       { name: "mATM Machine", image: "image/product/Gemini_Generated_Image_38p0g438p0g438p0-removebg-preview.png", path: "products.html#productGrid" }
@@ -97,7 +97,7 @@ const homeData = {
   faq: [
     {
       question: "What payment services does TPIPAY provide for merchants?",
-      answer: "TPIPAY supports UPI collection, API-based payment collection, payout workflows, prepaid card support, and soundbox-enabled merchant payment confirmations."
+      answer: "TPIPAY supports UPI collection, API-based payment collection, prepaid card support, and soundbox-enabled merchant payment confirmations."
     },
     {
       question: "How fast can I start accepting UPI and API collections?",
@@ -115,10 +115,10 @@ const homeData = {
       question: "How do I contact TPIPAY support for onboarding help?",
       answer: "You can reach support through the website contact section, registered support email, or phone. The onboarding team assists with setup, documentation, and go-live checks."
     },
-    {
-      question: "Is TPIPAY suitable for high-volume payout and collection workflows?",
-      answer: "Yes. The platform is designed for scalable transaction handling and can support high-frequency merchant collection and payout use cases."
-    },
+    // {
+    //   question: "Is TPIPAY suitable for high-volume payout and collection workflows?",
+    //   answer: "Yes. The platform is designed for scalable transaction handling and can support high-frequency merchant collection and payout use cases."
+    // },
     {
       question: "Can I integrate TPIPAY with my existing business software?",
       answer: "Yes. TPIPAY APIs can be integrated with existing ERP, billing, and custom business systems through standard REST-based integration patterns."
@@ -895,37 +895,37 @@ function renderBulkHomePage() {
 
   if (servicesTitle) servicesTitle.textContent = homeData.services.title;
   if (servicesDescription) servicesDescription.textContent = homeData.services.description;
-  if (serviceGrid) {
-    serviceGrid.innerHTML = homeData.services.cards.map((card, index) => {
-      const imageSource = card.image
-        || (homeData.products.items[index] && homeData.products.items[index].image);
-      const link = card.href || "service.html";
-      return `
-      <article class="service-showcase-row reveal-on-scroll">
-        <div class="service-showcase-media">
-          <div class="service-browser-mock">
-            <div class="service-browser-top">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="service-browser-body">
-              <img src="${imageSource}" alt="${card.title}" loading="lazy" decoding="async" fetchpriority="low">
-            </div>
-          </div>
-        </div>
-        <div class="service-showcase-copy">
-          <h3>${card.title}</h3>
-          <p>${card.description}</p>
-          <ul class="service-points">
-            <li><span class="point-check">✓</span>${homeData.mission.features[index % homeData.mission.features.length]}</li>
-            <li><span class="point-check">✓</span>${homeData.value.points[index % homeData.value.points.length]}</li>
-            <li><span class="point-check">✓</span>${homeData.benefits.items[index % homeData.benefits.items.length].description}</li>
-          </ul>
-          <a href="${link}" class="primary-btn">View Details</a>
-        </div>
-      </article>
-    `;
-    }).join("");
-  }
+  // if (serviceGrid) {
+  //   serviceGrid.innerHTML = homeData.services.cards.map((card, index) => {
+  //     const imageSource = card.image
+  //       || (homeData.products.items[index] && homeData.products.items[index].image);
+  //     const link = card.href || "service.html";
+  //     return `
+  //     <article class="service-showcase-row reveal-on-scroll">
+  //       <div class="service-showcase-media">
+  //         <div class="service-browser-mock">
+  //           <div class="service-browser-top">
+  //             <span></span><span></span><span></span>
+  //           </div>
+  //           <div class="service-browser-body">
+  //             <img src="${imageSource}" alt="${card.title}" loading="lazy" decoding="async" fetchpriority="low">
+  //           </div>
+  //         </div>
+  //       </div>
+  //       <div class="service-showcase-copy">
+  //         <h3>${card.title}</h3>
+  //         <p>${card.description}</p>
+  //         <ul class="service-points">
+  //           <li><span class="point-check">✓</span>${homeData.mission.features[index % homeData.mission.features.length]}</li>
+  //           <li><span class="point-check">✓</span>${homeData.value.points[index % homeData.value.points.length]}</li>
+  //           <li><span class="point-check">✓</span>${homeData.benefits.items[index % homeData.benefits.items.length].description}</li>
+  //         </ul>
+  //         <a href="${link}" class="primary-btn">View Details</a>
+  //       </div>
+  //     </article>
+  //   `;
+  //   }).join("");
+  // }
 
   if (productsTitle) productsTitle.textContent = homeData.products.title;
   if (productsDescription) productsDescription.textContent = homeData.products.description;
@@ -1253,14 +1253,28 @@ function bindHeroCarousel() {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let activeIndex = 0;
   let intervalId;
+  let transitionTimeoutId;
 
-  const showSlide = (index) => {
-    activeIndex = (index + slides.length) % slides.length;
+  const showSlide = (index, direction = 1) => {
+    const nextIndex = (index + slides.length) % slides.length;
+    if (nextIndex === activeIndex) return;
+
+    const outgoingSlide = slides[activeIndex];
+    const incomingSlide = slides[nextIndex];
+    const enteringClass = direction > 0 ? "is-entering-from-right" : "is-entering-from-left";
+    const exitingClass = direction > 0 ? "is-exiting-left" : "is-exiting-right";
+
+    window.clearTimeout(transitionTimeoutId);
     slides.forEach((slide, slideIndex) => {
-      const isActive = slideIndex === activeIndex;
-      slide.classList.toggle("is-active", isActive);
-      slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+      slide.classList.remove("is-active", "is-entering-from-right", "is-entering-from-left", "is-exiting-left", "is-exiting-right");
+      slide.setAttribute("aria-hidden", slideIndex === nextIndex ? "false" : "true");
     });
+    outgoingSlide.classList.add(exitingClass);
+    incomingSlide.classList.add(enteringClass);
+    void incomingSlide.offsetWidth;
+    incomingSlide.classList.add("is-active");
+    activeIndex = nextIndex;
+
     dots.forEach((dot, dotIndex) => {
       const isActive = dotIndex === activeIndex;
       dot.classList.toggle("is-active", isActive);
@@ -1270,6 +1284,15 @@ function bindHeroCarousel() {
         dot.removeAttribute("aria-current");
       }
     });
+    transitionTimeoutId = window.setTimeout(() => {
+      slides.forEach((slide) => slide.classList.remove(
+        "is-entering-from-right",
+        "is-entering-from-left",
+        "is-exiting-left",
+        "is-exiting-right"
+      ));
+      transitionTimeoutId = undefined;
+    }, 550);
   };
 
   const stopAutoplay = () => {
@@ -1279,18 +1302,18 @@ function bindHeroCarousel() {
   const startAutoplay = () => {
     stopAutoplay();
     if (reducedMotion.matches) return;
-    intervalId = window.setInterval(() => showSlide(activeIndex + 1), 5000);
+    intervalId = window.setInterval(() => showSlide(activeIndex + 1, 1), 2000);
   };
 
   previousButton.addEventListener("click", () => {
-    showSlide(activeIndex - 1);
+    showSlide(activeIndex - 1, -1);
   });
   nextButton.addEventListener("click", () => {
-    showSlide(activeIndex + 1);
+    showSlide(activeIndex + 1, 1);
   });
   dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
-      showSlide(index);
+      showSlide(index, index > activeIndex ? 1 : -1);
     });
   });
   let touchStartX;
@@ -1303,7 +1326,8 @@ function bindHeroCarousel() {
     const swipeDistance = event.clientX - touchStartX;
     touchStartX = undefined;
     if (Math.abs(swipeDistance) < 45) return;
-    showSlide(activeIndex + (swipeDistance < 0 ? 1 : -1));
+    const direction = swipeDistance < 0 ? 1 : -1;
+    showSlide(activeIndex + direction, direction);
   });
   carousel.addEventListener("pointercancel", () => {
     touchStartX = undefined;
@@ -1319,15 +1343,6 @@ function bindHeroCarousel() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const navToggle = document.querySelector(".menu-toggle");
-  const mainNav = document.querySelector(".main-nav");
-  if (navToggle && mainNav) {
-    navToggle.addEventListener("click", () => {
-      const opened = mainNav.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", opened ? "true" : "false");
-    });
-  }
-
   setCartCount();
   bindQtySteppers();
   bindProductCards();

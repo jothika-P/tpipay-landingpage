@@ -38,6 +38,56 @@
     document.body.append(icons);
   }
 
+  function initializeMobileNavigation() {
+    const navToggle = document.querySelector(".header-section .menu-toggle");
+    const mainNav = document.querySelector(".header-section .main-nav");
+    if (!navToggle || !mainNav) return;
+
+    const mobileBreakpoint = window.matchMedia("(max-width: 1050px)");
+    const resetDropdowns = () => {
+      mainNav.querySelectorAll(".nav-item.is-open").forEach((item) => item.classList.remove("is-open"));
+      mainNav.querySelectorAll(".nav-dropdown-toggle").forEach((toggle) => {
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    };
+    const setMenuOpen = (open) => {
+      if (!open) resetDropdowns();
+      mainNav.classList.toggle("open", open);
+      mainNav.classList.remove("active");
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      mainNav.setAttribute("aria-hidden", mobileBreakpoint.matches && !open ? "true" : "false");
+      document.body.classList.toggle("mobile-navigation-open", open && mobileBreakpoint.matches);
+    };
+
+    resetDropdowns();
+    mainNav.classList.remove("open", "active");
+    setMenuOpen(false);
+
+    navToggle.addEventListener("click", () => {
+      const opening = !mainNav.classList.contains("open");
+      if (opening) resetDropdowns();
+      setMenuOpen(opening);
+    });
+
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (mobileBreakpoint.matches) setMenuOpen(false);
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && mainNav.classList.contains("open")) setMenuOpen(false);
+    });
+    window.addEventListener("pageshow", () => {
+      resetDropdowns();
+      setMenuOpen(false);
+    });
+    mobileBreakpoint.addEventListener("change", () => {
+      resetDropdowns();
+      setMenuOpen(false);
+    });
+  }
+
   function initializeHeaderDropdowns() {
     document.querySelectorAll(".header-section .nav-dropdown-toggle").forEach((toggle) => {
       toggle.addEventListener("click", () => {
@@ -57,34 +107,17 @@
       });
     });
 
-    document.querySelectorAll(".header-section .main-nav a").forEach((link) => {
-      link.addEventListener("click", () => {
-        const nav = link.closest(".main-nav");
-        if (window.matchMedia("(max-width: 1050px)").matches && nav) {
-          nav.classList.remove("open", "active");
-        }
-      });
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape") return;
-      document.querySelectorAll(".header-section .nav-item.is-open").forEach((item) => {
-        item.classList.remove("is-open");
-        item.querySelector(".nav-dropdown-toggle")?.setAttribute("aria-expanded", "false");
-      });
-      document.querySelectorAll(".header-section .main-nav.open, .header-section .main-nav.active").forEach((nav) => {
-        nav.classList.remove("open", "active");
-      });
-    });
   }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
       initializeHeaderDropdowns();
+      initializeMobileNavigation();
       initializeStickyImages();
     }, { once: true });
   } else {
     initializeHeaderDropdowns();
+    initializeMobileNavigation();
     initializeStickyImages();
   }
 })();

@@ -98,6 +98,33 @@
   color: var(--bulk-ink);
 }
 
+.bulk-hero-actions .primary-btn,
+.bulk-hero-actions .secondary-btn {
+  border-color: rgba(147, 197, 253, 0.58);
+  background: #1e1e43;
+  box-shadow:
+    0 12px 28px rgba(5, 20, 55, 0.32),
+    0 0 18px rgba(37, 99, 190, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38),
+    inset 0 -2px 0 rgba(4, 10, 39, 0.3);
+  color: #fff;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  text-shadow: 0 1px 3px rgba(4, 10, 39, 0.35);
+}
+
+.bulk-hero-actions .primary-btn:hover,
+.bulk-hero-actions .secondary-btn:hover {
+  border-color: rgba(191, 219, 254, 0.88);
+  background: #29294f;
+  box-shadow:
+    0 14px 32px rgba(5, 20, 55, 0.36),
+    0 0 26px rgba(37, 99, 190, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.48),
+    inset 0 -2px 0 rgba(4, 10, 39, 0.24);
+  color: #fff;
+}
+
 .bulk-hero-visual {
   min-height: 350px;
   border-radius: 28px;
@@ -125,13 +152,29 @@
   display: grid;
   place-items: center;
   opacity: 0;
-  transition: opacity 0.45s ease;
+  transform: translateX(100%);
+  transition: opacity 0.45s ease, transform 0.45s ease;
   pointer-events: none;
 }
 
 .bulk-hero-slide.is-active {
   opacity: 1;
+  transform: translateX(0);
   pointer-events: auto;
+}
+
+.bulk-hero-slide.is-exiting-left {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.bulk-hero-slide.is-exiting-right,
+.bulk-hero-slide.is-entering-from-left:not(.is-active) {
+  transform: translateX(-100%);
+}
+
+.bulk-hero-slide.is-entering-from-right:not(.is-active) {
+  transform: translateX(100%);
 }
 
 .hero-main-image,
@@ -152,12 +195,13 @@
 }
 
 .bulk-hero-carousel .bulk-hero-image {
-  position: absolute;
-  top: 0;
-  left: 3%;
+  position: relative;
+  top: auto;
+  left: auto;
   width: min(94%, 620px);
-  height: 100%;
-  object-fit: contain;
+  height: auto;
+  aspect-ratio: 873 / 426;
+  object-fit: fill;
 }
 
 .bulk-hero-carousel-arrow {
@@ -1565,7 +1609,7 @@
   }
 
   .mission-wrap .mission-visual {
-    min-height: 220px;
+    min-height: 0;
   }
 
   .mission-wrap .mission-visual::before {
@@ -1576,8 +1620,10 @@
   }
 
   .mission-wrap #missionImage {
-    max-height: 360px;
-    transform: rotateX(-12deg) rotateY(4deg) rotateZ(-19deg) translateX(31px);
+    width: min(100%, 420px);
+    max-width: 100%;
+    max-height: none;
+    transform: none;
   }
 
   .mission-wrap #missionTitle {
@@ -1827,7 +1873,6 @@
     max-height: 240px;
   }
   .bulk-hero-carousel .bulk-hero-image {
-    left: 0;
     width: 100%;
   }
   .bulk-hero h1 {
@@ -1841,8 +1886,10 @@
     padding: 16px 12px;
   }
   .mission-wrap #missionImage {
-    max-height: 260px;
-    transform: rotateX(-12deg) rotateY(4deg) rotateZ(-19deg) translateX(6px);
+    width: min(100%, 360px);
+    max-width: 100%;
+    max-height: none;
+    transform: none;
   }
   .special-feature-panel .feature-image {
     min-height: 220px;
@@ -1876,8 +1923,10 @@
     font-size: clamp(24px, 9vw, 30px);
   }
   .mission-wrap #missionImage {
-    max-height: 230px;
-    transform: rotateX(-12deg) rotateY(4deg) rotateZ(-19deg) translateX(2px);
+    width: min(100%, 320px);
+    max-width: 100%;
+    max-height: none;
+    transform: none;
   }
   .app-modern-phones {
     min-height: 280px;
@@ -1896,8 +1945,10 @@
     max-height: 210px;
   }
   .mission-wrap #missionImage {
-    max-height: 210px;
-    transform: rotateX(-12deg) rotateY(4deg) rotateZ(-19deg) translateX(0);
+    width: min(100%, 280px);
+    max-width: 100%;
+    max-height: none;
+    transform: none;
   }
   .app-modern-phones {
     min-height: 250px;
