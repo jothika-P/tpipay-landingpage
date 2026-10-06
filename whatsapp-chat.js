@@ -15,7 +15,7 @@
         <button class="tpipay-wa-close" type="button" aria-label="Close WhatsApp support message">&times;</button>
         <a class="tpipay-wa-card-link" href="${SUPPORT_URL}" target="_blank" rel="noopener noreferrer" aria-label="Start a WhatsApp chat with TPIPAY support">
           <div class="tpipay-wa-heading">
-            <span class="tpipay-wa-avatar">${ICON}</span>
+            <img src="image/icon and logo/tpipay_logo_white.png" alt="TPIPAY Logo" class="tpipay-wa-logo" />
             <span>
               <span class="tpipay-wa-title">TPIPAY Support</span>
               <span class="tpipay-wa-status">Online · Reply instantly</span>

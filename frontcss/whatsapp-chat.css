@@ -61,6 +61,17 @@
   height: 23px;
 }
 
+.tpipay-wa-logo {
+  display: block;
+  width: 76px;
+  height: 38px;
+  flex: 0 0 76px;
+  padding: 5px 7px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0c134f 0%, #392477 100%);
+  object-fit: contain;
+}
+
 .tpipay-wa-title {
   margin: 0;
   font-size: 14px;
