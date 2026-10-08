@@ -21,7 +21,7 @@ body {
   font-family: 'Onest', sans-serif;
   background-color: #FFFFFF;
   color: var(--dark-teal);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img {
@@ -935,7 +935,6 @@ border-color: var(--primary-green);
   transform: translateY(-3px);
   box-shadow: -10px 10px 15px rgba(12, 19, 79, 0.25);
 }
-
 
 
 
